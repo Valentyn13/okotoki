@@ -92,7 +92,7 @@ const App = () => {
                 onClick: handleSecondTabClick,
             },
         ],
-        [],
+        [handleFirstTabClick, handleSecondTabClick],
     );
 
     return (
