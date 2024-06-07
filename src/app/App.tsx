@@ -6,17 +6,17 @@ import {
 } from '../entities/coins/model/store/coins-store';
 import {
     Button,
+    CoinList,
     DropDownLayout,
     fuzzySearch,
     Icon,
+    IconInput,
     IconName,
     Input,
     Tabs,
     useAppDispatch,
     useAppSelector,
 } from '../shared';
-import { CoinList } from '../shared/ui/coin-list/coin-list';
-import { IconInput } from '../shared/ui/icon-input/icon-input';
 
 import './styles/index.scss';
 

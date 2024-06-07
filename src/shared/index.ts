@@ -25,9 +25,11 @@ export {
 export {
     Button,
     CoinLabel,
+    CoinList,
     CoinListItem,
     DropDownLayout,
     Icon,
+    IconInput,
     Input,
     Tabs,
 } from './ui/index.ts';

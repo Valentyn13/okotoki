@@ -5,8 +5,8 @@ import {
     type UnknownAction,
 } from '@reduxjs/toolkit';
 
-import { coinsApi } from '../../entities/coins/api/coins-api.ts';
 import { reducer as coinsReducer } from '../../entities/coins/model/store/slice.ts';
+import { coinsApi } from '../../entities/index.ts';
 import { exampleApi } from '../../feature/example/api/example-api/example-api.ts';
 import { reducer as exampleReducer } from '../../feature/example/model/store/example.store.ts';
 type RootReducer = {
