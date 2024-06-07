@@ -1,5 +1,11 @@
 import { actions } from '../feature/example/model/store/example.store';
-import { Icon, IconName, useAppDispatch, useAppSelector } from '../shared';
+import {
+    Button,
+    Icon,
+    IconName,
+    useAppDispatch,
+    useAppSelector,
+} from '../shared';
 
 import './styles/index.scss';
 
@@ -19,6 +25,17 @@ const App = () => {
             <Icon name={IconName.SEARCH} />
             <Icon name={IconName.STAR_REGULAR} />
             <Icon name={IconName.STAR_SOLID} />
+            <br />
+            <div style={{ backgroundColor: 'black', padding: '20px' }}>
+                <Button active={true} onClick={() => {}}>
+                    <Icon name={IconName.SEARCH} />
+                    click
+                </Button>
+                <Button onClick={() => {}}>
+                    <Icon name={IconName.SEARCH} />
+                    click
+                </Button>
+            </div>
         </>
     );
 };
