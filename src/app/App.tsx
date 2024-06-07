@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 
 import {
     actions,
@@ -22,7 +22,9 @@ import './styles/index.scss';
 
 const App = () => {
     const dispatch = useAppDispatch();
+
     const { coins, selectedCoins } = useAppSelector((state) => state.coins);
+
     const [dropActive, setDropActive] = useState(false);
     const [activeTab, setActiveTab] = useState<number>(1);
     const [searchResults, setSearchResults] = useState({
@@ -30,23 +32,41 @@ const App = () => {
         selectedCoins,
     });
 
-    const handleAddFavourite = (coin: string) => {
-        void dispatch(actions.toggleCoinInActive(coin));
-    };
-    const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-        if (value === '') {
+    const handleAddFavourite = useCallback(
+        (coin: string) => {
+            void dispatch(actions.toggleCoinInActive(coin));
+        },
+        [dispatch],
+    );
+
+    const handleSearch = useCallback(
+        (e: ChangeEvent<HTMLInputElement>) => {
+            const value = e.target.value;
+            if (value === '') {
+                setSearchResults({
+                    coins: activeTab ? coins : selectedCoins,
+                    selectedCoins: activeTab ? selectedCoins : coins,
+                });
+            }
+            const result = fuzzySearch(
+                activeTab ? coins : selectedCoins,
+                value,
+            );
             setSearchResults({
-                coins: activeTab ? coins : selectedCoins,
-                selectedCoins: activeTab ? selectedCoins : coins,
+                coins: activeTab ? result : coins,
+                selectedCoins: activeTab ? selectedCoins : result,
             });
-        }
-        const result = fuzzySearch(activeTab ? coins : selectedCoins, value);
-        setSearchResults({
-            coins: activeTab ? result : coins,
-            selectedCoins: activeTab ? selectedCoins : result,
-        });
-    };
+        },
+        [activeTab, coins, selectedCoins],
+    );
+
+    const handleFirstTabClick = useCallback(() => {
+        setActiveTab(0);
+    }, []);
+
+    const handleSecondTabClick = useCallback(() => {
+        setActiveTab(1);
+    }, []);
 
     useEffect(() => {
         void dispatch(coinActions.getCoins());
@@ -58,6 +78,22 @@ const App = () => {
             selectedCoins,
         });
     }, [coins, selectedCoins]);
+
+    const tabButtons = useMemo(
+        () => [
+            {
+                label: 'FAVORITES',
+                withIcon: true,
+                onClick: handleFirstTabClick,
+            },
+            {
+                label: 'ALL COINS',
+                withIcon: false,
+                onClick: handleSecondTabClick,
+            },
+        ],
+        [],
+    );
 
     return (
         <>
@@ -82,25 +118,7 @@ const App = () => {
                                 }
                             />
                             <Tabs
-                                controll={[
-                                    <Button
-                                        key={0}
-                                        onClick={() => {
-                                            setActiveTab(0);
-                                        }}
-                                    >
-                                        <Icon name={IconName.STAR_SOLID} />
-                                        FAVORITES
-                                    </Button>,
-                                    <Button
-                                        key={1}
-                                        onClick={() => {
-                                            setActiveTab(1);
-                                        }}
-                                    >
-                                        ALL COINS
-                                    </Button>,
-                                ]}
+                                buttons={tabButtons}
                                 content={
                                     <CoinList
                                         onAddFavourite={handleAddFavourite}
