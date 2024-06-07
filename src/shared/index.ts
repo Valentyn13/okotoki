@@ -16,6 +16,7 @@ export {
     type ValueOf,
 } from './constants/index.ts';
 export {
+    fuzzySearch,
     localStorageToggler,
     truncate,
     useAppDispatch,
