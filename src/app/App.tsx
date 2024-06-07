@@ -1,5 +1,5 @@
 import { actions } from '../feature/example/model/store/example.store';
-import { useAppDispatch, useAppSelector } from '../shared';
+import { Icon, IconName, useAppDispatch, useAppSelector } from '../shared';
 
 import './styles/index.scss';
 
@@ -15,6 +15,10 @@ const App = () => {
             <h1>Hello world!!!</h1>
             <button onClick={handleClick}>get data</button>
             {data && <p>{JSON.stringify(data)}</p>}
+            <br />
+            <Icon name={IconName.SEARCH} />
+            <Icon name={IconName.STAR_REGULAR} />
+            <Icon name={IconName.STAR_SOLID} />
         </>
     );
 };

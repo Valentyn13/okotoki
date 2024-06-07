@@ -9,9 +9,9 @@ export {
     HttpHeader,
     type HttpMethod,
     type HttpOptions,
+    IconName,
     StorageKey,
     type ValueOf,
 } from './constants/index.ts';
 export { truncate, useAppDispatch, useAppSelector } from './lib/index.ts';
-export { Button } from './ui/index.ts';
-export { Input } from './ui/index.ts';
+export { Button, Icon, Input } from './ui/index.ts';

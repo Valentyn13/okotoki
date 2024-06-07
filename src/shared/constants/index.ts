@@ -3,6 +3,7 @@ export {
     ContentType,
     CookieName,
     HttpHeader,
+    IconName,
     StorageKey,
 } from './enums/enums.ts';
 export {

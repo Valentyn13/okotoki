@@ -19,8 +19,12 @@
         "lint:fix": "npm run lint:css:fix && npm run lint:js:fix && npm run lint:prettier:fix"
     },
     "dependencies": {
+        "@fortawesome/free-regular-svg-icons": "^6.5.2",
+        "@fortawesome/free-solid-svg-icons": "^6.5.2",
+        "@fortawesome/react-fontawesome": "^0.2.2",
         "@reduxjs/toolkit": "^2.2.5",
         "clsx": "^2.1.1",
+        "fortawesome": "^0.0.1-security",
         "js-cookie": "^3.0.5",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
