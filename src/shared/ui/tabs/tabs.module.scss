@@ -1,0 +1,22 @@
+.tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: rgb(156 156 156 / 43.8%);
+
+    &__buttons {
+        display: flex;
+        gap: 15px;
+        margin: 0 auto;
+    }
+
+    &__item {
+        padding: 5px 10px;
+        background-color: gray;
+
+        &_content {
+            padding: 15px;
+            background-color: rosybrown;
+        }
+    }
+}

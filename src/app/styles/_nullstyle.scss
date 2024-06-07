@@ -31,6 +31,7 @@ body {
 }
 
 body {
+    color: var(--color-white);
     font-size: 14px;
     font-family: var(--main-font-family);
     line-height: normal;
@@ -38,6 +39,10 @@ body {
     text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+    color: inherit;
 }
 
 input,

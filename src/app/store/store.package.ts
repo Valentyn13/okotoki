@@ -5,15 +5,18 @@ import {
     type UnknownAction,
 } from '@reduxjs/toolkit';
 
+import { coinsApi } from '../../entities/coins/api/coins-api.ts';
+import { reducer as coinsReducer } from '../../entities/coins/model/store/slice.ts';
 import { exampleApi } from '../../feature/example/api/example-api/example-api.ts';
 import { reducer as exampleReducer } from '../../feature/example/model/store/example.store.ts';
-
 type RootReducer = {
     example: ReturnType<typeof exampleReducer>;
+    coins: ReturnType<typeof coinsReducer>;
 };
 
 type ExtraArguments = {
     exampleApi: typeof exampleApi;
+    coinsApi: typeof coinsApi;
 };
 
 export class Store {
@@ -30,6 +33,7 @@ export class Store {
             devTools: true,
             reducer: {
                 example: exampleReducer,
+                coins: coinsReducer,
             },
             middleware: (getDefaultMiddleware) => {
                 return getDefaultMiddleware({
@@ -44,6 +48,7 @@ export class Store {
     public get extraArguments(): ExtraArguments {
         return {
             exampleApi,
+            coinsApi,
         };
     }
 }

@@ -5,13 +5,23 @@ export {
     type Coin,
     ContentType,
     CookieName,
+    type GetCoinsApiResponseDto,
     type HttpApiOptions,
     HttpHeader,
     type HttpMethod,
     type HttpOptions,
     IconName,
+    SliceState,
     StorageKey,
     type ValueOf,
 } from './constants/index.ts';
 export { truncate, useAppDispatch, useAppSelector } from './lib/index.ts';
-export { Button, Icon, Input } from './ui/index.ts';
+export {
+    Button,
+    CoinLabel,
+    CoinListItem,
+    DropDownLayout,
+    Icon,
+    Input,
+    Tabs,
+} from './ui/index.ts';

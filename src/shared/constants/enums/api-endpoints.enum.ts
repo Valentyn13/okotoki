@@ -1,6 +1,4 @@
 export enum ApiEndpoints {
-    POSITIONS = '/positions',
+    COINS = '/coins',
     TODOS = '/todos',
-    TOKEN = '/token',
-    USERS = '/users',
 }

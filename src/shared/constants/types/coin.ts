@@ -1,3 +1,1 @@
-export type Coin = {
-    label: string;
-};
+export type Coin = string;
