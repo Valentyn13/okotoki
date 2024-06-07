@@ -7,6 +7,7 @@ export {
 } from './enums/enums.ts';
 export {
     type AsyncThunkConfig,
+    type Coin,
     type HttpApiOptions,
     type HttpApiResponse,
     type HttpMethod,

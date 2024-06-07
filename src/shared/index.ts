@@ -2,6 +2,7 @@ export { HTTP, http, HttpApi, Storage, storage } from './api/index.ts';
 export {
     ApiEndpoints,
     type AsyncThunkConfig,
+    type Coin,
     ContentType,
     CookieName,
     type HttpApiOptions,
