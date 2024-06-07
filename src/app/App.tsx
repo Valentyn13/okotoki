@@ -6,9 +6,11 @@ import {
     DropDownLayout,
     Icon,
     IconName,
+    Input,
     Tabs,
     useAppDispatch,
 } from '../shared';
+import { IconInput } from '../shared/ui/icon-input/icon-input';
 
 import './styles/index.scss';
 
@@ -32,7 +34,15 @@ const App = () => {
                         <Icon name={IconName.SEARCH} />
                         search
                     </Button>
-                    {dropActive && <DropDownLayout toggleElement={<Tabs />} />}
+                    {dropActive && (
+                        <DropDownLayout>
+                            <IconInput
+                                prependedIcon={<Icon name={IconName.SEARCH} />}
+                                input={<Input placeholder="Search..." />}
+                            />
+                            <Tabs />
+                        </DropDownLayout>
+                    )}
                 </div>
             </div>
         </>

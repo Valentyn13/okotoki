@@ -1,3 +1,10 @@
 .input {
-    outline: none;
+    width: 100%;
+    padding: 8px 30px;
+    color: white;
+    background-color: rgb(153 153 153);
+
+    &::placeholder {
+        color: white;
+    }
 }

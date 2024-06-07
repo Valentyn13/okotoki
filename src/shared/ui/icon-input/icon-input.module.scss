@@ -1,0 +1,12 @@
+.wrapper {
+    position: relative;
+
+    svg {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        display: block;
+        color: var(--color-input-icon-gray);
+        transform: translate(-50%, -50%);
+    }
+}
