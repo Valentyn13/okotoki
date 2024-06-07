@@ -32,9 +32,9 @@ body {
 
 body {
     font-size: 16;
-    font-family: "Times New Roman", Times, serif;
+    font-family: var(--main-font-family);
     line-height: normal;
-    background-color: white;
+    background-color: var(--color-background);
     text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
