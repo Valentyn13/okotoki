@@ -18,6 +18,17 @@
     object-fit: contain;
 }
 
+.applayout {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.relative {
+    position: relative;
+    display: inline-block;
+}
+
 .polotno {
     max-width: 1440px;
     margin: 0 auto;

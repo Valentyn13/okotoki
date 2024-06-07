@@ -19,7 +19,25 @@
             height: 300px;
             padding: 15px;
             overflow-y: scroll;
-            background-color: rosybrown;
+            background-color: rgb(49 49 49);
+
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: #adadad;
+                border-radius: 2px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: #888888;
+                border-radius: 2px;
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+                background: #555555;
+            }
         }
     }
 }

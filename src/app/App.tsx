@@ -23,15 +23,8 @@ const App = () => {
 
     return (
         <>
-            <br />
-            <br />
-            <div style={{ marginLeft: '300px' }}>
-                <div
-                    style={{
-                        display: 'inline-block',
-                        position: 'relative',
-                    }}
-                >
+            <div className="applayout">
+                <div className="relative">
                     <Button
                         active={dropActive}
                         onClick={() => setDropActive(!dropActive)}
