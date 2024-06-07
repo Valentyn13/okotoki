@@ -1,40 +1,49 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useState } from 'react';
+
+import { actions } from '../../../entities/coins/model/store/coins-store';
+import { IconName } from '../../constants';
+import { useAppDispatch, useAppSelector } from '../../lib';
+import { Button } from '../button/button';
+import { CoinList } from '../coin-list/coin-list';
+import { Icon } from '../icon/icon';
 
 import styles from './tabs.module.scss';
 
-const TABS = [
-    {
-        title: 'Tab 1',
-        content: 'Content 1',
-    },
-    {
-        title: 'Tab 2',
-        content: 'Content 2',
-    },
-];
-
 export const Tabs = () => {
-    const [activeTab, setActiveTab] = useState<number>(0);
+    const dispatch = useAppDispatch();
+    const [activeTab, setActiveTab] = useState<number>(1);
+
+    const { coins, selectedCoins } = useAppSelector((state) => state.coins);
+
+    const handleAddFavourite = (coin: string) => {
+        dispatch(actions.toggleCoinInActive(coin));
+    };
+
     return (
         <div className={styles.tabs}>
             <div className={styles.tabs__buttons}>
-                {TABS.map((tab, index) => {
-                    return (
-                        <div
-                            onClick={() => setActiveTab(index)}
-                            key={index}
-                            className={styles.tabs__item}
-                        >
-                            {tab.title}
-                        </div>
-                    );
-                })}
+                <Button
+                    onClick={() => {
+                        setActiveTab(0);
+                    }}
+                >
+                    <Icon name={IconName.STAR_SOLID} />
+                    FAVORITES
+                </Button>
+                <Button
+                    onClick={() => {
+                        setActiveTab(1);
+                    }}
+                >
+                    ALL COINS
+                </Button>
             </div>
 
             <div className={styles.tabs__item_content}>
-                {TABS[activeTab].content}
+                <CoinList
+                    onAddFavourite={handleAddFavourite}
+                    coins={activeTab ? coins : selectedCoins}
+                />
             </div>
         </div>
     );

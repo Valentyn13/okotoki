@@ -18,11 +18,18 @@ type IconProps = {
     className?: string;
     color?: string;
     name: ValueOf<typeof IconName>;
+    onClick?: () => void;
 };
 
-export const Icon: FC<IconProps> = ({ color, name, className = '' }) => {
+export const Icon: FC<IconProps> = ({
+    color,
+    name,
+    className = '',
+    onClick,
+}) => {
     return (
         <FontAwesomeIcon
+            onClick={onClick}
             className={className}
             icon={iconNameToSvgIcon[name]}
             color={color}

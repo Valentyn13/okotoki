@@ -15,7 +15,12 @@ export {
     StorageKey,
     type ValueOf,
 } from './constants/index.ts';
-export { truncate, useAppDispatch, useAppSelector } from './lib/index.ts';
+export {
+    localStorageToggler,
+    truncate,
+    useAppDispatch,
+    useAppSelector,
+} from './lib/index.ts';
 export {
     Button,
     CoinLabel,

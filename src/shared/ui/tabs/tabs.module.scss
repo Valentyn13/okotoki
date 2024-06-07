@@ -1,12 +1,13 @@
 .tabs {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 5px;
+    padding: 5px;
     background-color: rgb(156 156 156 / 43.8%);
 
     &__buttons {
         display: flex;
-        gap: 15px;
+        gap: 5px;
         margin: 0 auto;
     }
 
@@ -15,7 +16,9 @@
         background-color: gray;
 
         &_content {
+            height: 300px;
             padding: 15px;
+            overflow-y: scroll;
             background-color: rosybrown;
         }
     }

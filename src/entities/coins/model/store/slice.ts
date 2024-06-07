@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { SliceState, StorageKey } from '../../../../shared';
+import {
+    localStorageToggler,
+    SliceState,
+    StorageKey,
+} from '../../../../shared';
 
 import { getCoins } from './actions';
 
@@ -24,8 +28,15 @@ const { reducer, actions, name } = createSlice({
     initialState,
     name: 'coins',
     reducers: {
-        addToSelectedCoins: (state, action: PayloadAction<string>) => {
-            state.selectedCoins.push(action.payload);
+        toggleCoinInActive: (state, action: PayloadAction<string>) => {
+            if (state.selectedCoins.includes(action.payload)) {
+                state.selectedCoins = state.selectedCoins.filter(
+                    (coin) => coin !== action.payload,
+                );
+            } else {
+                state.selectedCoins.push(action.payload);
+            }
+            localStorageToggler(action.payload, StorageKey.SELECTED_COINS);
         },
     },
     extraReducers(builder) {
