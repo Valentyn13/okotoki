@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { SliceState } from '../../../../shared';
+import { SliceState, StorageKey } from '../../../../shared';
 
 import { getCoins } from './actions';
 
@@ -8,18 +8,26 @@ type State = {
     state: SliceState;
     error: string | null;
     coins: string[];
+    selectedCoins: string[];
 };
 
 const initialState: State = {
     state: SliceState.IDLE,
     error: null,
     coins: [],
+    selectedCoins: (localStorage.getItem(StorageKey.SELECTED_COINS)
+        ? JSON.parse(localStorage.getItem(StorageKey.SELECTED_COINS) || '')
+        : []) as string[],
 };
 
 const { reducer, actions, name } = createSlice({
     initialState,
     name: 'coins',
-    reducers: {},
+    reducers: {
+        addToSelectedCoins: (state, action: PayloadAction<string>) => {
+            state.selectedCoins.push(action.payload);
+        },
+    },
     extraReducers(builder) {
         builder.addCase(getCoins.fulfilled, (state, action) => {
             state.state = SliceState.LOADING;
